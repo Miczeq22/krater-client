@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@assets/": ["./src/assets"],
+      "@layout/*": ["./src/layout/*"],
+      "@layout/": ["./src/layout"],
+      "@context/*": ["./src/context/*"],
+      "@context": ["./src/context"],
+      "@parts/*": ["./src/parts/*"],
+      "@parts": ["./src/parts"],
+      "@styles/*": ["./src/styles/*"],
+      "@styles": ["./src/styles"],
+      "@config": ["./src/config"],
+      "@hoc/*": ["./src/util/hoc/*"],
+      "@hoc": ["./src/util/hoc"],
+      "@hooks/*": ["./src/util/hooks/*"],
+      "@hooks": ["./src/util/hooks"],
+      "@pages/*": ["./src/pages/*"],
+      "@pages": ["./src/pages"],
+      "@router/*": ["./src/router/*"],
+      "@router": ["./src/router"],
+      "@i18n/*": ["./src/i18n/*"],
+      "@i18n": ["./src/i18n"],
+      "@domain/*": ["./src/domain/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@utils": ["./src/utils"],
+      "@theme/*": ["./src/theme/*"],
+      "@theme": ["./src/theme"],
+      "@providers/*": ["./src/providers/*"],
+      "@providers": ["./src/providers"]
+    }
+  }
+}
