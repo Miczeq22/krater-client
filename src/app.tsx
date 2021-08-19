@@ -1,10 +1,11 @@
 import './app.less';
 import { AppProvider } from '@providers/app.provider';
+import { AppRouting } from '@router/app-routing';
 
 function App() {
   return (
     <AppProvider>
-      <h1>Krater</h1>
+      <AppRouting />
     </AppProvider>
   );
 }

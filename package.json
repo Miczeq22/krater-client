@@ -24,11 +24,6 @@
     "web-vitals": "^1.0.1",
     "yup": "0.32.9"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick && lint-staged"
-    }
-  },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
@@ -36,7 +31,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts \"src/**/*\"",
     "format": "prettier --write \"src/**/*\"",
-    "release": "release-it"
+    "release": "release-it",
+    "pre-commit": "pretty-quick && lint-staged"
   },
   "eslintConfig": {
     "extends": [
