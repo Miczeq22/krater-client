@@ -32,6 +32,7 @@ const Container = styled.div<StyledDivProps>`
   .ant-input-password {
     border-radius: ${({ theme }) => theme.radius.medium};
     background-color: ${({ theme }) => theme.color.grey};
+    ${({ isErrorOccured, theme }) => isErrorOccured && `border: 1px solid ${theme.color.error}`};
     padding: 0 11px;
   }
 
