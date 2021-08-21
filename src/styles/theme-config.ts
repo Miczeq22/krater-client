@@ -1,12 +1,20 @@
 export const MOBILE_DEVICE_BREAKPOINT = 768;
 export const TABLET_DEVICE_BREAKPOINT = 992;
-export const DESKTOP_CONTAINER_WIDTH = 1140;
+export const DESKTOP_CONTAINER_WIDTH = 1410;
 
 export type FontFamily = 'primary' | 'secondary';
 
 export type DeviceBreakpoint = 'xsmall' | 'mobile' | 'tablet';
 
-export type Color = 'primary';
+export type Color =
+  | 'primary'
+  | 'fontPrimary'
+  | 'fontSecondary'
+  | 'error'
+  | 'errorLight'
+  | 'grey'
+  | 'white'
+  | 'fontGrey';
 
 export type Spacing = 'large' | 'base' | 'xbase' | 'medium' | 'xmedium' | 'small' | 'xsmall';
 
@@ -56,7 +64,14 @@ export const theme: Theme = {
     secondary: 'Raleway',
   },
   color: {
-    primary: '#10328E',
+    primary: '#1977F2',
+    fontPrimary: '#160647',
+    fontSecondary: '#574B7A',
+    error: '#C9596E',
+    errorLight: '#E2A4B1',
+    grey: '#F4F4F4',
+    white: '#FFFFFF',
+    fontGrey: '#C4C4C4',
   },
   radius: {
     default: '5px',
