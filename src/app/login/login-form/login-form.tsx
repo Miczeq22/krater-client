@@ -4,6 +4,7 @@ import { FormSubTitle } from 'src/ui/form-sub-title/form-sub-title';
 import { FormTitle } from 'src/ui/form-title/form-title';
 import { Form } from 'src/ui/form/form';
 import { FormikField } from 'src/ui/formik-field/formik-field';
+import { Logo } from 'src/ui/logo/logo';
 import * as Yup from 'yup';
 import S from './login-form.styles';
 
@@ -32,6 +33,9 @@ export const LoginForm = ({ onSubmit }: Props) => {
 
   return (
     <Form onSubmit={formik.handleSubmit} withSubtitle>
+      <S.LogoContainer>
+        <Logo />
+      </S.LogoContainer>
       <FormTitle>Hi, Welcome Back!</FormTitle>
       <FormSubTitle>Enter your credentials and see what&apos;s up with your news</FormSubTitle>
       <FormikField

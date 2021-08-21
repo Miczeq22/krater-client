@@ -18,7 +18,15 @@ export type Color =
 
 export type Spacing = 'large' | 'base' | 'xbase' | 'medium' | 'xmedium' | 'small' | 'xsmall';
 
-export type FontSize = 'xsmall' | 'small' | 'regular' | 'medium' | 'xmedium' | 'big' | 'large';
+export type FontSize =
+  | 'xsmall'
+  | 'small'
+  | 'regular'
+  | 'medium'
+  | 'xmedium'
+  | 'xbig'
+  | 'big'
+  | 'large';
 
 export type FontWeight = 'bold' | 'semibold' | 'normal' | 'light' | 'regular';
 
@@ -83,6 +91,7 @@ export const theme: Theme = {
     regular: '16px',
     xmedium: '18px',
     medium: '20px',
+    xbig: '27px',
     big: '34px',
     large: '48px',
   },
