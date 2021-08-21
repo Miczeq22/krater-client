@@ -1,6 +1,12 @@
 import { Button, Input } from 'antd';
 import { useFormik } from 'formik';
+import { FormSubTitle } from 'src/ui/form-sub-title/form-sub-title';
+import { FormTitle } from 'src/ui/form-title/form-title';
+import { Form } from 'src/ui/form/form';
+import { FormikField } from 'src/ui/formik-field/formik-field';
+import { Logo } from 'src/ui/logo/logo';
 import * as Yup from 'yup';
+import S from './register-form.styles';
 
 export interface RegisterPayload {
   nickname: string;
@@ -39,24 +45,76 @@ export const RegisterForm = ({ onSubmit }: Props) => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit} withSubtitle>
+      <S.LogoContainer>
+        <Logo />
+      </S.LogoContainer>
+      <FormTitle>Hello! Sign up to get started</FormTitle>
+      <FormSubTitle>Sign up and discover news, blogs and much more!</FormSubTitle>
+      <FormikField
+        label={{
+          label: 'Nickname',
+          for: 'nickname',
+        }}
+        error={formik.errors.nickname}
+        touched={formik.touched.nickname}
+      >
+        <Input
+          {...formik.getFieldProps('nickname')}
+          id="nickname"
+          placeholder="Enter your nickname..."
+        />
+      </FormikField>
+      <FormikField
+        label={{
+          label: 'Email address',
+          for: 'email',
+        }}
+        error={formik.errors.email}
+        touched={formik.touched.email}
+      >
+        <Input
+          {...formik.getFieldProps('email')}
+          id="email"
+          placeholder="Enter your email address..."
+        />
+      </FormikField>
       <div>
-        <Input {...formik.getFieldProps('nickname')} />
+        <FormikField
+          label={{
+            label: 'Password',
+            for: 'password',
+          }}
+          error={formik.errors.password}
+          touched={formik.touched.password}
+        >
+          <Input.Password
+            {...formik.getFieldProps('password')}
+            id="password"
+            placeholder="Enter your password..."
+          />
+        </FormikField>
+        <FormikField
+          label={{
+            label: 'Confirm password',
+            for: 'confirmPassword',
+          }}
+          error={formik.errors.confirmPassword}
+          touched={formik.touched.confirmPassword}
+        >
+          <Input.Password
+            {...formik.getFieldProps('confirmPassword')}
+            id="confirmPassword"
+            placeholder="Confirm your password..."
+          />
+        </FormikField>
       </div>
-      <div>
-        <Input {...formik.getFieldProps('email')} />
-      </div>
-      <div>
-        <Input.Password {...formik.getFieldProps('password')} />
-      </div>
-      <div>
-        <Input.Password {...formik.getFieldProps('confirmPassword')} />
-      </div>
-      <div>
-        <Button type="primary" htmlType="submit">
-          Register
-        </Button>
-      </div>
-    </form>
+      <Button type="primary" htmlType="submit" disabled={!formik.isValid}>
+        Register
+      </Button>
+      <S.LoginText>
+        Already a member? <S.LoginLink to="/login">Log in</S.LoginLink>
+      </S.LoginText>
+    </Form>
   );
 };
