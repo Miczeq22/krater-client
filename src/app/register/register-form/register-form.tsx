@@ -1,6 +1,7 @@
 import { Button, Input } from 'antd';
 import { useFormik } from 'formik';
 import { useTranslation } from 'src/hooks/use-translation/use-translation.hook';
+import { FormAlert } from 'src/ui/form-alert/form-alert';
 import { FormSubTitle } from 'src/ui/form-sub-title/form-sub-title';
 import { FormTitle } from 'src/ui/form-title/form-title';
 import { Form } from 'src/ui/form/form';
@@ -17,10 +18,13 @@ export interface RegisterPayload {
 }
 
 interface Props {
-  onSubmit: (values: Omit<RegisterPayload, 'confirmPassword'>) => void;
+  onSubmit: (values: Omit<RegisterPayload, 'confirmPassword'>) => Promise<void>;
+  loading: boolean;
+  errorMessage: string | null;
+  isSuccessful: boolean;
 }
 
-export const RegisterForm = ({ onSubmit }: Props) => {
+export const RegisterForm = ({ onSubmit, loading, errorMessage, isSuccessful }: Props) => {
   const [
     title,
     subTitle,
@@ -52,7 +56,7 @@ export const RegisterForm = ({ onSubmit }: Props) => {
   ]);
 
   const formik = useFormik<RegisterPayload>({
-    onSubmit,
+    onSubmit: ({ confirmPassword: confirmPasswordOmit, ...values }) => onSubmit(values),
     initialValues: {
       nickname: '',
       email: '',
@@ -82,6 +86,16 @@ export const RegisterForm = ({ onSubmit }: Props) => {
       </S.LogoContainer>
       <FormTitle>{title}</FormTitle>
       <FormSubTitle>{subTitle}</FormSubTitle>
+      {errorMessage && (
+        <FormAlert description={errorMessage} message="Registration Error" type="error" />
+      )}
+      {isSuccessful && (
+        <FormAlert
+          description="Account created successfuly, now please check your email and confirm your email address."
+          message="Registration success"
+          type="success"
+        />
+      )}
       <FormikField
         label={{
           label: nickname,
@@ -136,7 +150,7 @@ export const RegisterForm = ({ onSubmit }: Props) => {
           />
         </FormikField>
       </div>
-      <Button type="primary" htmlType="submit" disabled={!formik.isValid}>
+      <Button loading={loading} type="primary" htmlType="submit" disabled={!formik.isValid}>
         {button}
       </Button>
       <S.LoginText>
