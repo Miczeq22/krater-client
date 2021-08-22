@@ -29,7 +29,9 @@
       "@theme/*": ["./src/theme/*"],
       "@theme": ["./src/theme"],
       "@providers/*": ["./src/providers/*"],
-      "@providers": ["./src/providers"]
+      "@providers": ["./src/providers"],
+      "@storage/*": ["./src/storage/*"],
+      "@storage": ["./src/storage"]
     }
   }
 }

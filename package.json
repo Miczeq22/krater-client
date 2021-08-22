@@ -12,9 +12,11 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "antd": "4.16.12",
+    "axios": "0.21.1",
     "craco-alias": "3.0.1",
     "craco-less": "1.18.0",
     "formik": "2.2.9",
+    "jsonwebtoken": "8.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intl": "5.20.10",
@@ -55,6 +57,8 @@
     ]
   },
   "devDependencies": {
+    "@types/axios": "0.14.0",
+    "@types/jsonwebtoken": "8.5.5",
     "@types/react-intl": "3.0.0",
     "@types/react-query": "1.2.9",
     "@types/react-router-dom": "5.1.8",
