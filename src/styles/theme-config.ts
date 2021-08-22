@@ -14,7 +14,8 @@ export type Color =
   | 'errorLight'
   | 'grey'
   | 'white'
-  | 'fontGrey';
+  | 'fontGrey'
+  | 'background';
 
 export type Spacing = 'large' | 'base' | 'xbase' | 'medium' | 'xmedium' | 'small' | 'xsmall';
 
@@ -80,6 +81,7 @@ export const theme: Theme = {
     grey: '#F4F4F4',
     white: '#FFFFFF',
     fontGrey: '#C4C4C4',
+    background: '#FAFBFC',
   },
   radius: {
     default: '5px',
