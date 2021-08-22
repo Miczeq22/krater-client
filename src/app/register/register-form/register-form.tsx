@@ -1,5 +1,6 @@
 import { Button, Input } from 'antd';
 import { useFormik } from 'formik';
+import { useTranslation } from 'src/hooks/use-translation/use-translation.hook';
 import { FormSubTitle } from 'src/ui/form-sub-title/form-sub-title';
 import { FormTitle } from 'src/ui/form-title/form-title';
 import { Form } from 'src/ui/form/form';
@@ -20,6 +21,36 @@ interface Props {
 }
 
 export const RegisterForm = ({ onSubmit }: Props) => {
+  const [
+    title,
+    subTitle,
+    nickname,
+    nicknamePlaceholder,
+    email,
+    emailPlaceholder,
+    password,
+    passwordPlaceholder,
+    confirmPassword,
+    confirmPasswordPlaceholder,
+    button,
+    alreadyMember,
+    loginLink,
+  ] = useTranslation([
+    'register.title',
+    'register.subTitle',
+    'register.form.nickname',
+    'register.form.nickname.placeholder',
+    'register.form.email',
+    'register.form.email.placeholder',
+    'register.form.password',
+    'register.form.password.placeholder',
+    'register.form.confirmPassword',
+    'register.form.confirmPassword.placeholder',
+    'register.form.button',
+    'register.form.alreadyMember',
+    'register.form.loginLink',
+  ]);
+
   const formik = useFormik<RegisterPayload>({
     onSubmit,
     initialValues: {
@@ -49,11 +80,11 @@ export const RegisterForm = ({ onSubmit }: Props) => {
       <S.LogoContainer>
         <Logo />
       </S.LogoContainer>
-      <FormTitle>Hello! Sign up to get started</FormTitle>
-      <FormSubTitle>Sign up and discover news, blogs and much more!</FormSubTitle>
+      <FormTitle>{title}</FormTitle>
+      <FormSubTitle>{subTitle}</FormSubTitle>
       <FormikField
         label={{
-          label: 'Nickname',
+          label: nickname,
           for: 'nickname',
         }}
         error={formik.errors.nickname}
@@ -62,27 +93,23 @@ export const RegisterForm = ({ onSubmit }: Props) => {
         <Input
           {...formik.getFieldProps('nickname')}
           id="nickname"
-          placeholder="Enter your nickname..."
+          placeholder={nicknamePlaceholder}
         />
       </FormikField>
       <FormikField
         label={{
-          label: 'Email address',
+          label: email,
           for: 'email',
         }}
         error={formik.errors.email}
         touched={formik.touched.email}
       >
-        <Input
-          {...formik.getFieldProps('email')}
-          id="email"
-          placeholder="Enter your email address..."
-        />
+        <Input {...formik.getFieldProps('email')} id="email" placeholder={emailPlaceholder} />
       </FormikField>
       <div>
         <FormikField
           label={{
-            label: 'Password',
+            label: password,
             for: 'password',
           }}
           error={formik.errors.password}
@@ -91,12 +118,12 @@ export const RegisterForm = ({ onSubmit }: Props) => {
           <Input.Password
             {...formik.getFieldProps('password')}
             id="password"
-            placeholder="Enter your password..."
+            placeholder={passwordPlaceholder}
           />
         </FormikField>
         <FormikField
           label={{
-            label: 'Confirm password',
+            label: confirmPassword,
             for: 'confirmPassword',
           }}
           error={formik.errors.confirmPassword}
@@ -105,15 +132,15 @@ export const RegisterForm = ({ onSubmit }: Props) => {
           <Input.Password
             {...formik.getFieldProps('confirmPassword')}
             id="confirmPassword"
-            placeholder="Confirm your password..."
+            placeholder={confirmPasswordPlaceholder}
           />
         </FormikField>
       </div>
       <Button type="primary" htmlType="submit" disabled={!formik.isValid}>
-        Register
+        {button}
       </Button>
       <S.LoginText>
-        Already a member? <S.LoginLink to="/login">Log in</S.LoginLink>
+        {alreadyMember} <S.LoginLink to="/login">{loginLink}</S.LoginLink>
       </S.LoginText>
     </Form>
   );

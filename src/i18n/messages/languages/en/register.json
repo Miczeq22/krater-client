@@ -1,0 +1,15 @@
+{
+  "register.title": "Hello! Sign up to get started",
+  "register.subTitle": "Sign up and discover news, blogs and much more!",
+  "register.form.nickname": "Nickname",
+  "register.form.nickname.placeholder": "Enter your nickname...",
+  "register.form.email": "Email address",
+  "register.form.email.placeholder": "Enter your email address...",
+  "register.form.password": "Password",
+  "register.form.password.placeholder": "Enter your password...",
+  "register.form.confirmPassword": "Confirm password",
+  "register.form.confirmPassword.placeholder": "Confirm your password...",
+  "register.form.button": "Register",
+  "register.form.alreadyMember": "Already a member?",
+  "register.form.loginLink": "Log in"
+}

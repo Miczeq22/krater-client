@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { ThemeProvider } from '@theme/theme.provider';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { LocaleProvider } from '@i18n/locale.provider';
 
 interface Props {
   children: ReactNode;
@@ -8,6 +9,8 @@ interface Props {
 
 export const AppProvider = ({ children }: Props) => (
   <Router>
-    <ThemeProvider>{children}</ThemeProvider>
+    <LocaleProvider>
+      <ThemeProvider>{children}</ThemeProvider>
+    </LocaleProvider>
   </Router>
 );
