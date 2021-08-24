@@ -21,10 +21,9 @@ interface Props {
   onSubmit: (values: Omit<RegisterPayload, 'confirmPassword'>) => Promise<void>;
   loading: boolean;
   errorMessage: string | null;
-  isSuccessful: boolean;
 }
 
-export const RegisterForm = ({ onSubmit, loading, errorMessage, isSuccessful }: Props) => {
+export const RegisterForm = ({ onSubmit, loading, errorMessage }: Props) => {
   const [
     title,
     subTitle,
@@ -88,13 +87,6 @@ export const RegisterForm = ({ onSubmit, loading, errorMessage, isSuccessful }: 
       <FormSubTitle>{subTitle}</FormSubTitle>
       {errorMessage && (
         <FormAlert description={errorMessage} message="Registration Error" type="error" />
-      )}
-      {isSuccessful && (
-        <FormAlert
-          description="Account created successfuly, now please check your email and confirm your email address."
-          message="Registration success"
-          type="success"
-        />
       )}
       <FormikField
         label={{

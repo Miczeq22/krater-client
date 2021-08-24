@@ -7,10 +7,12 @@ import { registerAction } from 'src/api/register/register.actions';
 import { useState } from 'react';
 import { getErrorFromMessage } from '@utils/get-message-from-error/get-message-from-error';
 import { AxiosError } from 'axios';
+import { useHistory } from 'react-router-dom';
+import { message } from 'antd';
 
 export const RegisterPage = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isSuccessful, setIsSuccesful] = useState(false);
+  const history = useHistory();
 
   const registerMutation = useMutation(registerAction);
 
@@ -19,9 +21,11 @@ export const RegisterPage = () => {
 
     try {
       await registerMutation.mutateAsync(values);
-      setIsSuccesful(true);
+      message.success(
+        'Account created successfuly, now please check your email and confirm your email address.',
+      );
+      history.push('/login');
     } catch (error) {
-      setIsSuccesful(false);
       setErrorMessage(getErrorFromMessage(error as AxiosError));
     }
   };
@@ -38,7 +42,6 @@ export const RegisterPage = () => {
               onSubmit={onSubmit}
               loading={registerMutation.isLoading}
               errorMessage={errorMessage}
-              isSuccessful={isSuccessful}
             />
           </S.FormContainer>
         </S.InnerContainer>
