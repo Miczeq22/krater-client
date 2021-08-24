@@ -11,5 +11,8 @@
   "register.form.confirmPassword.placeholder": "Confirm your password...",
   "register.form.button": "Register",
   "register.form.alreadyMember": "Already a member?",
-  "register.form.loginLink": "Log in"
+  "register.form.loginLink": "Log in",
+  "register.errors.NicknameIsNotUniqueError": "Provided nickname is not unique. Please, use different one.",
+  "register.errors.EmailDoesNotHaveValidDomainError": "Provided email does not have valid domain, supported domains: [gmail.com]",
+  "register.errors.EmailIsAlreadyTakenError": "Provided email is already taken."
 }
