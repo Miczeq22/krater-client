@@ -1,5 +1,6 @@
 import { Button, Input } from 'antd';
 import { useFormik } from 'formik';
+import { FormAlert } from 'src/ui/form-alert/form-alert';
 import { FormSubTitle } from 'src/ui/form-sub-title/form-sub-title';
 import { FormTitle } from 'src/ui/form-title/form-title';
 import { Form } from 'src/ui/form/form';
@@ -15,9 +16,11 @@ export interface LoginPayload {
 
 interface Props {
   onSubmit: (values: LoginPayload) => void;
+  loading: boolean;
+  errorMessage: string | null;
 }
 
-export const LoginForm = ({ onSubmit }: Props) => {
+export const LoginForm = ({ onSubmit, loading, errorMessage }: Props) => {
   const formik = useFormik<LoginPayload>({
     onSubmit,
     initialValues: {
@@ -38,6 +41,7 @@ export const LoginForm = ({ onSubmit }: Props) => {
       </S.LogoContainer>
       <FormTitle>Hi, Welcome Back!</FormTitle>
       <FormSubTitle>Enter your credentials and see what&apos;s up with your news</FormSubTitle>
+      {errorMessage && <FormAlert description={errorMessage} message="Login error" type="error" />}
       <FormikField
         touched={formik.touched.email}
         error={formik.errors.email}
@@ -66,7 +70,7 @@ export const LoginForm = ({ onSubmit }: Props) => {
           placeholder="Enter your password..."
         />
       </FormikField>
-      <Button type="primary" htmlType="submit" disabled={!formik.isValid}>
+      <Button type="primary" htmlType="submit" disabled={!formik.isValid} loading={loading}>
         Login
       </Button>
       <S.RegistrationText>

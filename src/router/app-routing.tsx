@@ -2,13 +2,15 @@ import { ConfirmEmailPage } from '@pages/confirm-email/confirm-email.page';
 import { HomePage } from '@pages/home/home.page';
 import { LoginPage } from '@pages/login/login.page';
 import { RegisterPage } from '@pages/register/register.page';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { AuthorizedRoute } from './authorized-route';
+import { GuestRoute } from './guest-route';
 
 export const AppRouting = () => (
   <Switch>
-    <Route exact path="/login" component={LoginPage} />
-    <Route exact path="/register" component={RegisterPage} />
-    <Route exact path="/" component={HomePage} />
-    <Route exact path="/confirm-email" component={ConfirmEmailPage} />
+    <GuestRoute exact path="/login" component={LoginPage} />
+    <GuestRoute exact path="/register" component={RegisterPage} />
+    <AuthorizedRoute exact path="/" component={HomePage} />
+    <AuthorizedRoute exact path="/confirm-email" component={ConfirmEmailPage} />
   </Switch>
 );
