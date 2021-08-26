@@ -3,7 +3,7 @@
 const ACCESS_TOKEN_KEY = 'accessToken';
 const REFRESH_TOKEN_KEY = 'refreshToken';
 
-class AuthStorage {
+export class AuthStorage {
   private accessToken: string | null = null;
 
   private refreshToken: string | null = null;

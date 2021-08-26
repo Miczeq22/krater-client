@@ -10,6 +10,10 @@ export const authInitialState: AuthState = {
   accessToken: '',
   isAuthorized: false,
   isEmailConfirmed: false,
+  email: '',
+  nickname: '',
+  id: '',
+  loading: true,
 };
 
 export const AuthContext = createContext<AuthState | AuthStateApi>(authInitialState);

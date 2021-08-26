@@ -1,7 +1,7 @@
-import { tokenStorage, TokenStorage } from '@storage/token/token.storage';
+/* eslint-disable @typescript-eslint/no-shadow */
 import axios, { AxiosRequestConfig } from 'axios';
 import { AxiosConfig, createAxiosInstance } from './create-axios';
-import jwt from 'jsonwebtoken';
+import { AuthStorage, authStorage } from '@context/auth/auth.storage';
 
 export const axiosConfig = {
   baseURL: process.env.REACT_APP_API_ENDPOINT,
@@ -14,15 +14,15 @@ export const axiosConfig = {
   withCredentials: true,
 };
 
-const prepareConfigWithToken = (config: AxiosRequestConfig, token: string) => ({
+const prepareConfigWithToken = (config: AxiosRequestConfig, token: string | null) => ({
   ...config,
   headers: {
     ...config.headers,
-    'X-JWT': `Bearer ${token}`,
+    'X-Auth-Token': `Bearer ${token ?? ''}`,
   },
 });
 
-const fetchRefreshToken = async (config: AxiosRequestConfig, storage: TokenStorage) => {
+const fetchRefreshToken = async (config: AxiosRequestConfig, authStorage: AuthStorage) => {
   const refreshTokenResponse = await fetch(`${axiosConfig.baseURL}/refresh-token`, {
     method: 'POST',
     credentials: 'include',
@@ -31,39 +31,37 @@ const fetchRefreshToken = async (config: AxiosRequestConfig, storage: TokenStora
   const responseBody = await refreshTokenResponse.json();
 
   if (responseBody?.error) {
-    storage.resetAccessToken();
+    authStorage.setAccessToken(null);
 
     return config;
   }
 
-  const payload = jwt.decode(responseBody.accessToken) as {
-    exp: number;
-  };
-
-  storage.setAccessToken(responseBody.accessToken, payload?.exp ?? 0);
+  authStorage.setAccessToken(responseBody.accessToken);
 
   return prepareConfigWithToken(config, responseBody.accessToken);
 };
 
 export const createRefreshToken =
-  (storage: TokenStorage) => async (config: AxiosRequestConfig | AxiosConfig) => {
-    if ((config as AxiosConfig)?.skipAuthorization || storage.isTokenActive()) {
-      return prepareConfigWithToken(config, storage.getAccessToken());
+  (authStorage: AuthStorage) => async (config: AxiosRequestConfig | AxiosConfig) => {
+    if ((config as AxiosConfig)?.skipAuthorization || authStorage.getAccessToken()) {
+      return prepareConfigWithToken(config, authStorage.getAccessToken());
     }
 
     try {
       const result = await axios(config);
 
       if (result.data.errors && result.data.errors[0].message.startsWith('Access denied')) {
-        return await fetchRefreshToken(config, tokenStorage);
+        return await fetchRefreshToken(config, authStorage);
       }
 
       return result;
     } catch (error) {
-      return fetchRefreshToken(config, tokenStorage);
+      return fetchRefreshToken(config, authStorage);
     }
   };
 
 const instance = createAxiosInstance(axiosConfig);
+
+instance.interceptors.request.use(createRefreshToken(authStorage));
 
 export const axiosInstance = instance;

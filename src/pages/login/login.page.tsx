@@ -4,10 +4,10 @@ import { ReactComponent as LoginIcon } from '@assets/login.svg';
 import { Container } from 'src/ui/container/container';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { loginAction } from 'src/api/login/login.actions';
 import { getErrorFromMessage } from '@utils/get-message-from-error/get-message-from-error';
 import { useAuthState } from 'src/hooks/use-auth-state/use-auth-state.hook';
 import { setAccessToken } from '@context/auth/auth.actions-creators';
+import { loginAction } from 'src/api/platform-access/platform-access.actions';
 
 export const LoginPage = () => {
   const { dispatch } = useAuthState();
