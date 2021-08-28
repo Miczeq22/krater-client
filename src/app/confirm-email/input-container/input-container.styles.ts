@@ -38,7 +38,6 @@ const Title = styled.h2`
 const SubTitle = styled.h3`
   color: ${({ theme }) => theme.color.fontSecondary};
   font-size: ${({ theme }) => theme.fontSize.regular};
-  /* max-width: 70%; */
   text-align: center;
   margin: ${({ theme }) => `${theme.spacing.medium} 0`};
 `;
@@ -49,6 +48,9 @@ const Content = styled.section`
 
 const Footer = styled.footer`
   margin-top: ${({ theme }) => theme.spacing.medium};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Button = styled(AntdButton)`
@@ -56,6 +58,18 @@ const Button = styled(AntdButton)`
   min-width: 200px;
   height: 50px;
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
+`;
+
+const ResendText = styled.p`
+  margin-top: ${({ theme }) => theme.spacing.small};
+  font-size: ${({ theme }) => theme.fontSize.small};
+  color: ${({ theme }) => theme.color.fontSecondary};
+`;
+
+const ResendButton = styled(Button)`
+  margin: 0;
+  padding: 0;
+  min-width: auto;
 `;
 
 const S = {
@@ -67,6 +81,8 @@ const S = {
   Content,
   Footer,
   Button,
+  ResendText,
+  ResendButton,
 };
 
 export default S;

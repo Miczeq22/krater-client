@@ -2,6 +2,9 @@ import { AuthCodeInput } from '../auth-code-input/auth-code-input';
 import { ReactComponent as LockIcon } from '@assets/unlock.svg';
 import S from './input-container.styles';
 import { useState } from 'react';
+import { useMutation } from 'react-query';
+import { resendActivationCodeAction } from 'src/api/platform-access/platform-access.actions';
+import { message } from 'antd';
 
 const VALID_AUTH_CODE_LENGTH = 4;
 
@@ -11,6 +14,7 @@ interface Props {
 }
 
 export const InputContainer = ({ onSubmit, loading }: Props) => {
+  const resendActivationCodeMutation = useMutation(resendActivationCodeAction);
   const [authCode, setAuthCode] = useState('');
 
   const handleAuthCodeChange = (value: string) => {
@@ -23,6 +27,12 @@ export const InputContainer = ({ onSubmit, loading }: Props) => {
     }
 
     onSubmit(authCode);
+  };
+
+  const handleResendActivationCode = async () => {
+    await resendActivationCodeMutation.mutateAsync();
+
+    message.success("We've send you activation code 🚀. Please, check your email! 📧");
   };
 
   return (
@@ -47,6 +57,16 @@ export const InputContainer = ({ onSubmit, loading }: Props) => {
         >
           Verify email
         </S.Button>
+        <S.ResendText>
+          Didn&apos;t receive code?{' '}
+          <S.ResendButton
+            type="link"
+            onClick={handleResendActivationCode}
+            disabled={resendActivationCodeMutation.isSuccess}
+          >
+            Send again
+          </S.ResendButton>
+        </S.ResendText>
       </S.Footer>
     </S.Container>
   );
