@@ -28,3 +28,5 @@ export const confirmEmailAction = (activationCode: string) =>
   axiosInstance.patch('/confirm-email', {
     activationCode,
   });
+
+export const resendActivationCodeAction = () => axiosInstance.post('/resend-confirmation-code');
