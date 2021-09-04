@@ -32,7 +32,7 @@ export const InputContainer = ({ onSubmit, loading }: Props) => {
   const handleResendActivationCode = async () => {
     await resendActivationCodeMutation.mutateAsync();
 
-    message.success("We've send you activation code 🚀. Please, check your email! 📧");
+    message.success("We've send you activation code 🚀. Please, check your email. 📧");
   };
 
   return (
@@ -62,7 +62,9 @@ export const InputContainer = ({ onSubmit, loading }: Props) => {
           <S.ResendButton
             type="link"
             onClick={handleResendActivationCode}
-            disabled={resendActivationCodeMutation.isSuccess}
+            disabled={
+              resendActivationCodeMutation.isLoading ? true : resendActivationCodeMutation.isSuccess
+            }
           >
             Send again
           </S.ResendButton>
