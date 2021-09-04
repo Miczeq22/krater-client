@@ -31,7 +31,9 @@
       "@providers/*": ["./src/providers/*"],
       "@providers": ["./src/providers"],
       "@storage/*": ["./src/storage/*"],
-      "@storage": ["./src/storage"]
+      "@storage": ["./src/storage"],
+      "@ui/*": ["./src/ui/*"],
+      "@ui": ["./src/ui"]
     }
   }
 }
