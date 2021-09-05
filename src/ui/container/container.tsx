@@ -5,4 +5,6 @@ interface Props {
   children: ReactNode;
 }
 
-export const Container = ({ children }: Props) => <S.Container>{children}</S.Container>;
+export const Container = ({ children }: Props) => (
+  <S.Container className="app-container">{children}</S.Container>
+);
