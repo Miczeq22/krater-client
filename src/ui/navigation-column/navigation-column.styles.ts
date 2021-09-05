@@ -1,21 +1,23 @@
 import styled from 'styled-components';
 
-const Container = styled.section``;
+const Container = styled.section`
+  display: flex;
+  flex-direction: column;
 
-const AvatarHolder = styled.div``;
+  & > div {
+    margin-bottom: ${({ theme }) => theme.spacing.medium};
+  }
 
-const NameHolder = styled.div``;
+  & > div::last-child {
+    margin-bottom: 0;
+  }
+`;
 
-const Name = styled.h3``;
-
-const Nickname = styled.p``;
+const Item = styled.div``;
 
 const S = {
   Container,
-  AvatarHolder,
-  NameHolder,
-  Name,
-  Nickname,
+  Item,
 };
 
 export default S;

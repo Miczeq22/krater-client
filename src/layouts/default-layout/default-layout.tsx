@@ -19,6 +19,5 @@ export const DefaultLayout = ({ children }: Props) => (
       <Container>{children}</Container>
       <SocialColumn />
     </S.Body>
-    <S.Footer>Footer</S.Footer>
   </S.PageLayout>
 );
