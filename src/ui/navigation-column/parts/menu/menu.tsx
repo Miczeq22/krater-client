@@ -1,4 +1,6 @@
+import { BookFilled, HomeFilled, MessageFilled, ProfileFilled } from '@ant-design/icons';
 import { Card } from '@ui/card/card';
+import { Link } from 'react-router-dom';
 import S from './menu.styles';
 
 export const Menu = () => (
@@ -7,10 +9,26 @@ export const Menu = () => (
     <Card>
       <S.Navigation>
         <S.NavigationList>
-          <S.NavigationListItem>Home</S.NavigationListItem>
-          <S.NavigationListItem>Blogs</S.NavigationListItem>
-          <S.NavigationListItem>Messages</S.NavigationListItem>
-          <S.NavigationListItem>Profile</S.NavigationListItem>
+          <S.NavigationListItem active>
+            <Link to="/">
+              <HomeFilled /> Home
+            </Link>
+          </S.NavigationListItem>
+          <S.NavigationListItem>
+            <Link to="/">
+              <BookFilled /> Blogs
+            </Link>
+          </S.NavigationListItem>
+          <S.NavigationListItem>
+            <Link to="/">
+              <MessageFilled /> Messages
+            </Link>
+          </S.NavigationListItem>
+          <S.NavigationListItem>
+            <Link to="/">
+              <ProfileFilled /> Profile
+            </Link>
+          </S.NavigationListItem>
         </S.NavigationList>
       </S.Navigation>
     </Card>

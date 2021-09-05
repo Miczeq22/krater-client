@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface NavigationListItemProps {
+  active?: boolean;
+}
+
 const Container = styled.section``;
 
 const MenuHeader = styled.h4`
@@ -14,18 +18,41 @@ const Navigation = styled.nav``;
 
 const NavigationList = styled.ul`
   list-style: none;
-  padding: 0 ${({ theme }) => theme.spacing.medium};
 
   & > li:last-child {
     border-bottom: none;
   }
 `;
 
-const NavigationListItem = styled.li`
+const NavigationListItem = styled.li<NavigationListItemProps>`
   border-bottom: 1px solid ${({ theme }) => theme.color.grey};
-  padding: ${({ theme }) => theme.spacing.medium} 0;
+  padding: ${({ theme }) => theme.spacing.medium} ${({ theme }) => theme.spacing.medium};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
-  color: ${({ theme }) => theme.color.fontSecondary};
+  position: relative;
+
+  .anticon {
+    margin-right: ${({ theme }) => theme.spacing.small};
+  }
+
+  & > a {
+    color: ${({ theme, active }) => (active ? theme.color.primary : theme.color.fontSecondary)};
+  }
+
+  &::before {
+    content: '';
+    display: ${({ active = false }) => (active ? 'block' : 'none')};
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background-color: ${({ theme }) => theme.color.primary};
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.grey};
+    cursor: pointer;
+  }
 `;
 
 const S = {
