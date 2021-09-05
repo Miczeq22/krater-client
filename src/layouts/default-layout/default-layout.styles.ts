@@ -11,7 +11,21 @@ const Header = styled.header`
   width: 100%;
 `;
 
-const Body = styled.section``;
+const Body = styled.section`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: ${({ theme }) => theme.spacing.medium} ${({ theme }) => theme.spacing.base};
+
+  & > .social-column,
+  & > .navigation-column {
+    flex: 1;
+  }
+
+  & > .app-container {
+    flex: 3;
+  }
+`;
 
 const Footer = styled.footer``;
 

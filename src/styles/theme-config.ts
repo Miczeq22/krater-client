@@ -81,7 +81,7 @@ export const theme: Theme = {
     grey: '#F4F4F4',
     white: '#FFFFFF',
     fontGrey: '#C4C4C4',
-    background: '#FAFBFC',
+    background: '#F6F8F9',
   },
   radius: {
     default: '5px',
