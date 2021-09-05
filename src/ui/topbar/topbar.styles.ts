@@ -9,6 +9,7 @@ const TopBarContainer = styled.header`
   border-bottom: 1px solid ${({ theme }) => theme.color.grey};
   background-color: ${({ theme }) => theme.color.white};
   padding: ${({ theme }) => theme.spacing.medium} ${({ theme }) => theme.spacing.base};
+  position: sticky;
 `;
 
 const LogoContainer = styled.section``;
