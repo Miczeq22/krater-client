@@ -9,6 +9,8 @@ const PageLayout = styled.main`
 
 const Header = styled.header`
   width: 100%;
+  position: sticky;
+  top: 0;
 `;
 
 const Body = styled.section`
@@ -20,6 +22,7 @@ const Body = styled.section`
   & > .social-column,
   & > .navigation-column {
     flex: 1;
+    max-width: 350px;
   }
 
   & > .app-container {
