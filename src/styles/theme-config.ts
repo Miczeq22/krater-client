@@ -15,7 +15,8 @@ export type Color =
   | 'grey'
   | 'white'
   | 'fontGrey'
-  | 'background';
+  | 'background'
+  | 'fontBlack';
 
 export type Spacing = 'large' | 'base' | 'xbase' | 'medium' | 'xmedium' | 'small' | 'xsmall';
 
@@ -76,6 +77,7 @@ export const theme: Theme = {
     primary: '#1977F2',
     fontPrimary: '#160647',
     fontSecondary: '#574B7A',
+    fontBlack: '#213E62',
     error: '#C9596E',
     errorLight: '#E2A4B1',
     grey: '#F4F4F4',
