@@ -8,7 +8,7 @@ export const HotArticles = () => (
     <S.Title>
       <FireOutlined /> Popular Today
     </S.Title>
-    <Carousel>
+    <Carousel autoplay>
       <HotArticle />
       <HotArticle />
       <HotArticle />

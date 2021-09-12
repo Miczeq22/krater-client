@@ -9,7 +9,7 @@ export const HomePage = () => (
     <S.CarouselContainer>
       <HotArticles />
     </S.CarouselContainer>
-    <Tabs>
+    <S.Tabs>
       <Tabs.TabPane tab="Newest" key="1">
         <ArticleList />
         <Pagination defaultCurrent={1} total={10000} showSizeChanger={false} defaultPageSize={20} />
@@ -20,6 +20,6 @@ export const HomePage = () => (
       <Tabs.TabPane tab="Favourite" key="3" disabled>
         <ArticleList />
       </Tabs.TabPane>
-    </Tabs>
+    </S.Tabs>
   </DefaultLayout>
 );

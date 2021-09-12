@@ -6,6 +6,13 @@ const Header = styled.header`
   align-items: center;
 `;
 
+const Title = styled.h4`
+  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  color: ${({ theme }) => theme.color.fontPrimary};
+  margin: ${({ theme }) => theme.spacing.medium} 0;
+`;
+
 const ProfileContainer = styled.section`
   display: flex;
 `;
@@ -29,7 +36,6 @@ const Time = styled.span`
 const OptionsContainer = styled.section``;
 
 const Body = styled.section`
-  margin-top: ${({ theme }) => theme.spacing.medium};
   color: ${({ theme }) => theme.color.fontBlack};
   font-size: ${({ theme }) => theme.fontSize.regular};
   font-weight: ${({ theme }) => theme.fontWeight.normal};
@@ -51,6 +57,7 @@ const Footer = styled.footer`
 
 const S = {
   Header,
+  Title,
   ProfileContainer,
   TextContainer,
   Nickname,
