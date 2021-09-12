@@ -20,6 +20,7 @@ export const Article = () => (
         </Button>
       </S.OptionsContainer>
     </S.Header>
+    <S.Title>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</S.Title>
     <S.Body>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel rhoncus arcu, in venenatis
       ex. Aenean eu sapien lacinia, scelerisque sapien sed, rutrum mi. Quisque eget ante leo. Donec

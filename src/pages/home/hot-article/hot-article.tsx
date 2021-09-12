@@ -1,4 +1,4 @@
-import { CommentOutlined, LikeOutlined } from '@ant-design/icons';
+import { MessageFilled, LikeFilled } from '@ant-design/icons';
 import { theme } from '@styles/theme-config';
 import { CircularImage } from '@ui/avatar/avatar';
 import { Tag } from 'antd';
@@ -23,8 +23,12 @@ export const HotArticle = () => (
           </S.AuthorText>
         </S.Author>
         <S.ActionItems>
-          <LikeOutlined /> 85 Likes
-          <CommentOutlined /> 103 Comments
+          <S.ActionItem>
+            <LikeFilled /> 85 Likes
+          </S.ActionItem>
+          <S.ActionItem>
+            <MessageFilled /> 103 Comments
+          </S.ActionItem>
         </S.ActionItems>
       </S.Footer>
     </S.Content>
